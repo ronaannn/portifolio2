@@ -1,23 +1,29 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-PT">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio Direção & Cinematografia</title>
+    <title>Ronan | Cinematografia e Direção</title>
+    
+    <!-- Importação da fonte Radio Canada do Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Radio+Canada:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+
     <style>
-        /* Estilos Base e Tipografia */
+        /* Estilos Base - Tema Escuro Cinematográfico */
         :root {
-            --bg-color: #f8f8f5; 
-            --text-color: #1a1a1a;
-            --hover-color: #555;
-            --divider-color: #e0e0e0;
+            --bg-color: #050505;
+            --text-color: #f0f0f0;
+            --accent-color: #aaaaaa;
+            --font-main: 'Radio Canada', sans-serif;
+            --font-title: 'Radio Canada', sans-serif;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         }
 
         html {
@@ -27,210 +33,230 @@
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
-            display: flex;
-            min-height: 100vh;
+            font-family: var(--font-main);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Menu Lateral (Desktop) */
-        aside {
-            width: 260px;
-            height: 100vh;
+        /* Cabeçalho Fixo e Transparente */
+        header {
             position: fixed;
             top: 0;
             left: 0;
-            padding: 3rem 2rem;
+            width: 100%;
+            padding: 2rem 4rem;
             display: flex;
-            flex-direction: column;
-            border-right: 1px solid var(--divider-color);
-            background-color: var(--bg-color);
-            z-index: 100;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to bottom, rgba(5,5,5,0.9) 0%, rgba(5,5,5,0) 100%);
+            z-index: 1000;
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            letter-spacing: -1px;
-            margin-bottom: 3rem;
-            line-height: 1;
-        }
-
-        nav {
-            flex-grow: 1;
         }
 
         nav ul {
             list-style: none;
             display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
+            gap: 2rem;
         }
 
         nav a {
-            text-decoration: none;
             color: var(--text-color);
+            text-decoration: none;
             font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
             font-weight: 500;
-            transition: color 0.3s ease, padding-left 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: color 0.3s;
         }
 
         nav a:hover {
-            color: var(--hover-color);
-            padding-left: 5px;
+            color: var(--accent-color);
         }
 
-        .contact-info {
-            font-size: 0.85rem;
-            border-top: 1px solid var(--divider-color);
-            padding-top: 1.5rem;
-        }
-
-        .contact-info a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        /* Conteúdo Principal */
+        /* Área Principal */
         main {
-            margin-left: 260px;
-            padding: 3rem 4rem;
-            width: calc(100% - 260px);
+            padding: 120px 4rem 4rem 4rem;
+            max-width: 1600px;
+            margin: 0 auto;
         }
 
         section {
-            margin-bottom: 6rem;
-            padding-top: 2rem; 
+            margin-bottom: 8rem;
+            padding-top: 40px; 
         }
 
-        .section-title {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: #777;
-            margin-bottom: 2rem;
-            display: flex;
-            align-items: center;
-            gap: 15px;
+        .category-title {
+            font-family: var(--font-title);
+            font-size: 2.5rem;
+            font-weight: 300;
+            font-style: italic;
+            color: var(--text-color);
+            margin-bottom: 3rem;
+            text-align: center;
+            opacity: 0.9;
         }
 
-        .section-title::after {
-            content: "";
-            height: 1px;
-            background-color: var(--divider-color);
-            flex-grow: 1;
-        }
-
-        /* Grid de Projetos 16:9 */
-        .project-grid {
+        /* Grelha de Projetos */
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-            gap: 3rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4rem 3rem;
         }
 
-        .project-item {
+        .project {
             display: flex;
             flex-direction: column;
-            cursor: pointer;
+            gap: 1rem;
         }
 
-        .project-thumb {
+        /* Contentor 16:9 limpo */
+        .media-container {
             width: 100%;
             aspect-ratio: 16 / 9;
-            background-color: #ddd;
+            background-color: #111;
             position: relative;
             overflow: hidden;
         }
 
-        /* Título sobre a imagem/vídeo */
-        .project-title {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            z-index: 10;
-            color: #ffffff;
-            font-size: 1.2rem;
-            font-weight: 600;
-            letter-spacing: -0.5px;
-            /* Sombra escura para garantir leitura em frames muito claros */
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8), 0px 0px 15px rgba(0, 0, 0, 0.5);
-            pointer-events: none; /* Impede que o título bloqueie o clique no iframe */
-        }
-
-        /* Iframe do Vimeo */
-        .project-thumb iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            pointer-events: none; 
-            transition: transform 0.4s ease;
-        }
-
-        /* Imagens para Slideshow/Únicas */
-        .project-thumb img {
+        /* Iframes e Imagens */
+        .media-container iframe,
+        .media-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            border: none;
             position: absolute;
             top: 0;
             left: 0;
-            opacity: 0;
-            transition: opacity 0.6s ease, transform 0.4s ease;
+            pointer-events: none; 
         }
 
-        .project-thumb img.active {
+        /* Imagens do Slideshow */
+        .media-container img {
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        .media-container img.active {
             opacity: 1;
         }
 
-        /* Efeito de zoom suave no hover */
-        .project-item:hover .project-thumb iframe,
-        .project-item:hover .project-thumb img.active {
-            transform: scale(1.03);
+        /* Título do Projeto (Abaixo da imagem) */
+        .project-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        /* Placeholder para projetos sem mídia ainda */
-        .empty-thumb::before {
-            content: "Em Breve";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: #999;
-            font-size: 0.8rem;
+        .project-name {
+            font-size: 1.1rem;
+            font-weight: 600;
             letter-spacing: 1px;
             text-transform: uppercase;
         }
 
-        /* Responsividade */
+        .project-role {
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Placeholder */
+        .placeholder::after {
+            content: "Material em Breve";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #555;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Rodapé / Contacto */
+        footer {
+            text-align: center;
+            padding: 6rem 2rem;
+            border-top: 1px solid #222;
+            margin-top: 4rem;
+        }
+
+        .footer-title {
+            font-family: var(--font-title);
+            font-size: 2rem;
+            font-weight: 300;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .email-link {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-color);
+            text-decoration: none;
+            letter-spacing: -1px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .email-link::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--text-color);
+            transition: transform 0.3s ease;
+            transform-origin: bottom right;
+            transform: scaleX(0);
+        }
+
+        .email-link:hover::after {
+            transform-origin: bottom left;
+            transform: scaleX(1);
+        }
+
+        /* Responsividade (Telemóveis e Tablets) */
         @media (max-width: 992px) {
-            body { flex-direction: column; }
-            aside {
-                width: 100%;
-                height: auto;
-                position: relative;
+            header {
                 padding: 1.5rem;
-                border-bottom: 1px solid var(--divider-color);
+                flex-direction: column;
+                gap: 1.5rem;
+                background: #050505; 
             }
-            .logo { margin-bottom: 1.5rem; text-align: center; }
-            nav ul { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 1rem 1.5rem; }
-            .contact-info { text-align: center; margin-top: 1.5rem; border-top: none; padding-top: 0; }
-            main { margin-left: 0; width: 100%; padding: 2rem 1.5rem; }
-            .project-grid { grid-template-columns: 1fr; gap: 2rem; }
-            
-            /* Ajuste do título no celular */
-            .project-title {
-                top: 15px;
-                left: 15px;
-                font-size: 1.1rem;
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            main {
+                padding: 150px 1.5rem 2rem 1.5rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr; 
+                gap: 3rem;
+            }
+
+            .email-link {
+                font-size: 1.2rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <aside>
+    <header>
         <div class="logo">Portfólio</div>
         <nav>
             <ul>
@@ -241,139 +267,184 @@
                 <li><a href="#documentario">Documentário</a></li>
             </ul>
         </nav>
-        <div class="contact-info">
-            <p>Contato</p>
-            <a href="mailto:ronan15pc@hotmail.com">ronan15pc@hotmail.com</a>
-        </div>
-    </aside>
+    </header>
 
     <main>
+        <!-- FASHION FILM -->
         <section id="fashion-film">
-            <h2 class="section-title">Fashion Film</h2>
-            <div class="project-grid">
-                <div class="project-item">
-                    <div class="project-thumb">
+            <h2 class="category-title">Fashion Film</h2>
+            <div class="grid">
+                <div class="project">
+                    <div class="media-container">
                         <iframe src="https://player.vimeo.com/video/1232821697?background=1&autoplay=1&loop=1&byline=0&title=0" allow="autoplay; fullscreen"></iframe>
-                        <div class="project-title">Libervita</div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-name">Libervita</span>
+                        <span class="project-role">Dir. Fotografia</span>
                     </div>
                 </div>
-                <div class="project-item">
-                    <div class="project-thumb">
+                <div class="project">
+                    <div class="media-container">
                         <iframe src="https://player.vimeo.com/video/1232823704?background=1&autoplay=1&loop=1&byline=0&title=0" allow="autoplay; fullscreen"></iframe>
-                        <div class="project-title">Micélio</div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-name">Micélio</span>
+                        <span class="project-role">Dir. Fotografia</span>
                     </div>
                 </div>
-                <div class="project-item">
-                    <div class="project-thumb">
+                <div class="project">
+                    <div class="media-container">
                         <iframe src="https://player.vimeo.com/video/1232853760?background=1&autoplay=1&loop=1&byline=0&title=0" allow="autoplay; fullscreen"></iframe>
-                        <div class="project-title">Giro Loco</div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-name">Giro Loco</span>
+                        <span class="project-role">Dir. Fotografia</span>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- VIDEOCLIPE -->
         <section id="videoclip">
-            <h2 class="section-title">Videoclipe</h2>
-            <div class="project-grid">
-                <div class="project-item">
-                    <div class="project-thumb">
+            <h2 class="category-title">Videoclipe</h2>
+            <div class="grid">
+                <div class="project">
+                    <div class="media-container">
                         <iframe src="https://player.vimeo.com/video/1232829974?background=1&autoplay=1&loop=1&byline=0&title=0" allow="autoplay; fullscreen"></iframe>
-                        <div class="project-title">Stand-it</div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-name">Stand-it</span>
+                        <span class="project-role">Dir. Fotografia</span>
                     </div>
                 </div>
-                <div class="project-item">
-                    <div class="project-thumb">
+                <div class="project">
+                    <div class="media-container">
                         <iframe src="https://player.vimeo.com/video/1232829093?background=1&autoplay=1&loop=1&byline=0&title=0" allow="autoplay; fullscreen"></iframe>
-                        <div class="project-title">Fabgodam</div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-name">Fabgodam</span>
+                        <span class="project-role">Dir. Fotografia</span>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- CURTA-METRAGEM -->
         <section id="curta-metragem">
-            <h2 class="section-title">Curta-Metragem</h2>
-            <div class="project-grid">
-                <div class="project-item">
-                    <div class="project-thumb">
+            <h2 class="category-title">Curta-Metragem</h2>
+            <div class="grid">
+                <div class="project">
+                    <div class="media-container">
                         <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/a0bb56256645443.6ac2ae49d4d52.png" alt="Matando" class="active">
-                        <div class="project-title">Matando</div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-name">Matando</span>
+                        <span class="project-role">Cinematografia</span>
                     </div>
                 </div>
-                <div class="project-item">
-                    <div class="project-thumb slideshow">
+                <div class="project">
+                    <div class="media-container slideshow">
                         <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/abe8af256645443.6ac2ae49d470b.png" alt="Sonhos">
                         <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/1f5756256645443.6ac2ae49d5288.png" alt="Sonhos">
                         <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/9dd99e256645443.6ac2ae49d5eae.png" alt="Sonhos">
                         <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/680a43256645443.6ac2ae49d5844.png" alt="Sonhos">
                         <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/a0bb56256645443.6ac2ae49d4d52.png" alt="Sonhos">
-                        <div class="project-title">Sonhos</div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-name">Sonhos</span>
+                        <span class="project-role">Cinematografia</span>
                     </div>
                 </div>
-                <div class="project-item">
-                    <div class="project-thumb">
+                <div class="project">
+                    <div class="media-container">
                         <iframe src="https://player.vimeo.com/video/1232806609?background=1&autoplay=1&loop=1&byline=0&title=0" allow="autoplay; fullscreen"></iframe>
-                        <div class="project-title">Angor</div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-name">Angor</span>
+                        <span class="project-role">Cinematografia</span>
                     </div>
                 </div>
-                <div class="project-item">
-                    <div class="project-thumb">
+                <div class="project">
+                    <div class="media-container">
                         <iframe src="https://player.vimeo.com/video/1232808341?background=1&autoplay=1&loop=1&byline=0&title=0" allow="autoplay; fullscreen"></iframe>
-                        <div class="project-title">Supercurta</div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-name">Supercurta</span>
+                        <span class="project-role">Cinematografia</span>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- SHOW -->
         <section id="show">
-            <h2 class="section-title">Show</h2>
-            <div class="project-grid">
-                <div class="project-item">
-                    <div class="project-thumb slideshow">
+            <h2 class="category-title">Show</h2>
+            <div class="grid">
+                <div class="project">
+                    <div class="media-container slideshow">
                         <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/d04585214797941.675ee8bae7825.jpg" alt="Kyan">
                         <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/d9e3a7214797941.675ee8bae7da0.jpg" alt="Kyan">
                         <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/083b49214797941.675ee8baea749.jpg" alt="Kyan">
                         <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/4886bc214797941.675ee8baea0ee.jpg" alt="Kyan">
                         <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/e46f92214797941.675ee8bae82f7.jpg" alt="Kyan">
-                        <div class="project-title">Kyan</div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-name">Kyan</span>
+                        <span class="project-role">Audiovisual</span>
                     </div>
                 </div>
-                <div class="project-item">
-                    <div class="project-thumb slideshow">
+                <div class="project">
+                    <div class="media-container slideshow">
                         <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/0b246a228875229.685ac730a5e63.jpg" alt="Matuê">
                         <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/b3c8da228875229.685ac730a501c.jpeg" alt="Matuê">
-                        <div class="project-title">Matuê</div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-name">Matuê</span>
+                        <span class="project-role">Audiovisual</span>
                     </div>
                 </div>
-                <div class="project-item">
-                    <div class="project-thumb slideshow">
+                <div class="project">
+                    <div class="media-container slideshow">
                         <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/a268db228219853.684f7786821cd.jpg" alt="Sá & Guarabyra">
                         <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/05f3e0228219853.684f778680c1e.jpg" alt="Sá & Guarabyra">
                         <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/7097de228219853.684f7786845cf.jpg" alt="Sá & Guarabyra">
                         <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/cd2a65228219853.684f778684d70.jpg" alt="Sá & Guarabyra">
                         <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/18a07f228219853.684f778681293.jpg" alt="Sá & Guarabyra">
-                        <div class="project-title">Sá & Guarabyra</div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-name">Sá & Guarabyra</span>
+                        <span class="project-role">Audiovisual</span>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- DOCUMENTÁRIO -->
         <section id="documentario">
-            <h2 class="section-title">Documentário</h2>
-            <div class="project-grid">
-                <div class="project-item">
-                    <div class="project-thumb empty-thumb">
-                        <div class="project-title">Pertencer</div>
+            <h2 class="category-title">Documentário</h2>
+            <div class="grid">
+                <div class="project">
+                    <div class="media-container placeholder">
+                        <!-- Sem media por enquanto -->
+                    </div>
+                    <div class="project-info">
+                        <span class="project-name">Pertencer</span>
+                        <span class="project-role">Documentário</span>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Script para ativar o slideshow nas galerias de múltiplas imagens -->
+    <footer id="contato">
+        <h2 class="footer-title">Vamos trabalhar juntos.</h2>
+        <a href="mailto:ronan15pc@hotmail.com" class="email-link">ronan15pc@hotmail.com</a>
+    </footer>
+
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+            // Script para o Slideshow Automático de Imagens
             const slideshows = document.querySelectorAll('.slideshow');
-            
             slideshows.forEach(slideContainer => {
                 const images = slideContainer.querySelectorAll('img');
                 if (images.length > 0) {
@@ -385,7 +456,7 @@
                             images[currentIndex].classList.remove('active');
                             currentIndex = (currentIndex + 1) % images.length;
                             images[currentIndex].classList.add('active');
-                        }, 2000);
+                        }, 2500);
                     }
                 }
             });
