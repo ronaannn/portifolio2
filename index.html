@@ -1,9 +1,18 @@
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ronã Grangeiro | DOP</title>
+
+    <!-- Metatags para partilha no WhatsApp e Redes Sociais -->
+    <meta property="og:title" content="Ronã Grangeiro | Cinematografia e Direção">
+    <meta property="og:description" content="Portfólio audiovisual. Fashion films, videoclipes, curtas-metragens e documentários.">
+    <!-- Imagem da miniatura (capa do WhatsApp) -->
+    <meta property="og:image" content="https://mir-s3-cdn-cf.behance.net/project_modules/fs/abe8af256645443.6ac2ae49d470b.png">
+    <meta property="og:url" content="https://ronaannn.github.io/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
     
     <!-- Importação das fontes Radio Canada e Cormorant Garamond do Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -99,7 +108,7 @@
             transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        /* Logotipo (Animação para o Canto quando ativo) */
+        /* Logotipo (Animação para o Canto quando ativo - DESKTOP) */
         body.site-active .logo {
             top: 2rem;
             left: 4rem;
@@ -175,9 +184,9 @@
 
         .category-title {
             font-family: var(--font-title);
-            font-size: 3.5rem; /* Ajustado para a Cormorant Garamond ficar visível e elegante */
+            font-size: 3.5rem; 
             font-weight: 500;
-            font-style: italic; /* Mantido o itálico que combina perfeitamente com a fonte */
+            font-style: italic; 
             color: var(--text-color);
             margin-bottom: 3rem;
             text-align: center;
@@ -220,13 +229,13 @@
             pointer-events: none; 
         }
 
-        /* Mídias em Projetos normais (sem slideshow) ficam sempre visíveis */
+        /* Mídias em Projetos normais ficam sempre visíveis */
         .media-container:not(.slideshow) iframe,
         .media-container:not(.slideshow) img {
             opacity: 1;
         }
 
-        /* Mídias em Projetos com Slideshow (Vídeos e Fotos misturados) */
+        /* Mídias em Projetos com Slideshow */
         .media-container.slideshow iframe,
         .media-container.slideshow img {
             opacity: 0;
@@ -236,7 +245,7 @@
             opacity: 1;
         }
 
-        /* Título do Projeto (Abaixo da imagem) */
+        /* Título do Projeto */
         .project-info {
             display: flex;
             justify-content: space-between;
@@ -257,7 +266,7 @@
             text-transform: uppercase;
         }
 
-        /* Rodapé / Contacto */
+        /* Rodapé / Contato */
         footer {
             text-align: center;
             padding: 6rem 2rem;
@@ -302,20 +311,48 @@
             transform: scaleX(1);
         }
 
-        /* Responsividade (Telemóveis e Tablets) */
+        /* =========================================
+           RESPONSIVIDADE (CELULARES E TABLETS) 
+           ========================================= */
         @media (max-width: 992px) {
+            
+            /* 1. Ajuste do logo inicial para não quebrar a palavra */
+            .logo {
+                width: 100%;
+                padding: 0 1rem;
+            }
+            .logo-title {
+                font-size: 0.9rem;
+                letter-spacing: 6px;
+            }
             .logo-name {
-                font-size: 2.5rem; /* Nome mais pequeno nos telemóveis */
+                font-size: 2.2rem;
+                letter-spacing: 3px;
             }
 
+            /* 2. Animação no celular: a logo sobre reto e fica centralizada (muito mais suave) */
             body.site-active .logo {
-                top: 1.5rem;
-                left: 1.5rem; /* Ajuste do canto no telemóvel */
+                top: 1rem;
+                left: 50%;
+                transform: translateX(-50%); /* Mantém no centro horizontal */
+                text-align: center;
             }
 
+            body.site-active .logo-title {
+                font-size: 0.6rem;
+                letter-spacing: 4px;
+                margin-bottom: 0;
+            }
+
+            body.site-active .logo-name {
+                font-size: 1.2rem;
+                letter-spacing: 2px;
+            }
+
+            /* 3. Ajustes de espaço para o conteúdo e vídeos */
             body.site-active header {
                 background: #050505; /* Fundo sólido para garantir leitura no topo */
-                height: 80px;
+                height: 70px;
             }
 
             main {
@@ -323,11 +360,11 @@
             }
             
             .category-title {
-                font-size: 2.5rem;
+                font-size: 2.2rem; /* Títulos levemente menores na tela do celular */
             }
 
             .grid {
-                grid-template-columns: 1fr; 
+                grid-template-columns: 1fr; /* Coluna única no celular */
                 gap: 3rem;
             }
 
