@@ -5,10 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ronan | Cinematografia e Direção</title>
     
-    <!-- Importação da fonte Radio Canada do Google Fonts -->
+    <!-- Metatags para partilha no WhatsApp e Redes Sociais -->
+    <meta property="og:title" content="Ronã Grangeiro | Cinematografia e Direção">
+    <meta property="og:description" content="Portfólio audiovisual. Fashion films, videoclipes, curtas-metragens e documentários.">
+    <!-- Imagem da miniatura (capa do WhatsApp) -->
+    <meta property="og:image" content="https://mir-s3-cdn-cf.behance.net/project_modules/fs/abe8af256645443.6ac2ae49d470b.png">
+    <meta property="og:url" content="https://ronaannn.github.io/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Importação das fontes Radio Canada e Cormorant Garamond do Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Radio+Canada:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Radio+Canada:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
 
     <style>
         /* Estilos Base - Tema Escuro Cinematográfico */
@@ -16,8 +25,10 @@
             --bg-color: #050505;
             --text-color: #f0f0f0;
             --accent-color: #aaaaaa;
+            /* Radio Canada para a página inicial, botão e nomes dos projetos */
             --font-main: 'Radio Canada', sans-serif;
-            --font-title: 'Radio Canada', sans-serif;
+            /* Cormorant Garamond EXCLUSIVA para os títulos das secções */
+            --font-title: 'Cormorant Garamond', serif;
         }
 
         * {
@@ -30,76 +41,157 @@
             scroll-behavior: smooth;
         }
 
+        /* ----- LÓGICA DA TELA DE ENTRADA ----- */
+        
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
             font-family: var(--font-main);
             line-height: 1.5;
             -webkit-font-smoothing: antialiased;
+            overflow: hidden; /* Bloqueia o scroll antes do clique */
         }
 
-        /* Cabeçalho Fixo e Transparente */
+        body.site-active {
+            overflow-x: hidden;
+            overflow-y: auto; /* Liberta o scroll depois do clique */
+        }
+
+        /* O Header funciona inicialmente como Tela de Entrada (100% de ecrã) */
         header {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            padding: 2rem 4rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: linear-gradient(to bottom, rgba(5,5,5,0.9) 0%, rgba(5,5,5,0) 100%);
+            width: 100vw;
+            height: 100vh;
+            background-color: var(--bg-color);
             z-index: 1000;
+            transition: height 1.2s cubic-bezier(0.25, 1, 0.5, 1), background-color 1.2s ease;
         }
 
+        /* Quando ativo, o Header encolhe e fica apenas um fundo gradiente */
+        body.site-active header {
+            height: 120px;
+            background-color: transparent;
+            background: linear-gradient(to bottom, rgba(5,5,5,0.9) 0%, rgba(5,5,5,0) 100%);
+            pointer-events: none; /* Deixa os cliques passarem para os vídeos por baixo */
+        }
+
+        /* Logotipo (Centrado no início) */
         .logo {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            text-transform: uppercase;
+            transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+            pointer-events: auto;
+        }
+
+        .logo-title {
+            display: block;
             font-size: 1.2rem;
-            font-weight: 700;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-        }
-
-        nav a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
+            font-weight: 300;
+            letter-spacing: 12px;
             color: var(--accent-color);
+            margin-bottom: 0.5rem;
+            transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1);
         }
+
+        .logo-name {
+            display: block;
+            font-size: 4rem;
+            font-weight: 700;
+            letter-spacing: 8px;
+            line-height: 1.1;
+            transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* Logotipo (Animação para o Canto quando ativo) */
+        body.site-active .logo {
+            top: 2rem;
+            left: 4rem;
+            transform: translate(0, 0);
+            text-align: left;
+        }
+
+        body.site-active .logo-title {
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            margin-bottom: 0.1rem;
+        }
+
+        body.site-active .logo-name {
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+        }
+
+        /* Botão Conhecer Trabalho */
+        #enter-btn {
+            position: absolute;
+            top: 65%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: transparent;
+            color: var(--text-color);
+            border: 1px solid var(--accent-color);
+            padding: 12px 32px;
+            font-size: 0.9rem;
+            font-family: var(--font-main);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            pointer-events: auto;
+        }
+
+        #enter-btn:hover {
+            background: var(--text-color);
+            color: var(--bg-color);
+        }
+
+        body.site-active #enter-btn {
+            opacity: 0;
+            visibility: hidden;
+            transform: translate(-50%, 20px); /* Botão desce suavemente e desaparece */
+        }
+
+        /* O conteúdo do site fica oculto até ao clique */
+        main, footer {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1.2s ease 0.5s, transform 1.2s ease 0.5s; /* Delay para a logo subir primeiro */
+        }
+
+        body.site-active main, body.site-active footer {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ----- FIM DA LÓGICA DE ENTRADA ----- */
 
         /* Área Principal */
         main {
-            padding: 120px 4rem 4rem 4rem;
+            padding: 140px 4rem 4rem 4rem;
             max-width: 1600px;
             margin: 0 auto;
         }
 
         section {
             margin-bottom: 8rem;
-            padding-top: 40px; 
         }
 
         .category-title {
             font-family: var(--font-title);
-            font-size: 2.5rem;
-            font-weight: 300;
-            font-style: italic;
+            font-size: 3.5rem; 
+            font-weight: 500;
+            font-style: italic; 
             color: var(--text-color);
             margin-bottom: 3rem;
             text-align: center;
             opacity: 0.9;
+            letter-spacing: 2px;
         }
 
         /* Grelha de Projetos */
@@ -184,10 +276,11 @@
 
         .footer-title {
             font-family: var(--font-title);
-            font-size: 2rem;
-            font-weight: 300;
+            font-size: 3rem;
+            font-weight: 500;
             font-style: italic;
             margin-bottom: 2rem;
+            letter-spacing: 2px;
         }
 
         .email-link {
@@ -220,21 +313,26 @@
 
         /* Responsividade (Telemóveis e Tablets) */
         @media (max-width: 992px) {
-            header {
-                padding: 1.5rem;
-                flex-direction: column;
-                gap: 1.5rem;
-                background: #050505; 
+            .logo-name {
+                font-size: 2.5rem; /* Nome mais pequeno nos telemóveis */
             }
 
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 1rem;
+            body.site-active .logo {
+                top: 1.5rem;
+                left: 1.5rem; /* Ajuste do canto no telemóvel */
+            }
+
+            body.site-active header {
+                background: #050505; /* Fundo sólido para garantir leitura no topo */
+                height: 80px;
             }
 
             main {
-                padding: 150px 1.5rem 2rem 1.5rem;
+                padding: 100px 1.5rem 2rem 1.5rem;
+            }
+            
+            .category-title {
+                font-size: 2.5rem;
             }
 
             .grid {
@@ -251,17 +349,11 @@
 <body>
 
     <header>
-        <div class="logo">Portfólio</div>
-        <nav>
-            <ul>
-                <li><a href="#fashion-film">Fashion Film</a></li>
-                <li><a href="#videoclip">Videoclipe</a></li>
-                <li><a href="#curta-metragem">Curta-Metragem</a></li>
-                <li><a href="#show">Show</a></li>
-                <li><a href="#documentario">Documentário</a></li>
-                <li><a href="#automotivo">hvgarage</a></li>
-            </ul>
-        </nav>
+        <div class="logo">
+            <span class="logo-title">Portfólio</span>
+            <span class="logo-name">Ronã Grangeiro</span>
+        </div>
+        <button id="enter-btn">Conhecer trabalho</button>
     </header>
 
     <main>
@@ -336,7 +428,7 @@
                     </div>
                     <div class="project-info">
                         <span class="project-name">Matando</span>
-                        <span class="project-role">Cinematografia</span>
+                        <span class="project-role">Dir. Fotografia</span>
                     </div>
                 </div>
                 <div class="project">
@@ -352,7 +444,7 @@
                         <span class="project-role">Dir. Fotografia</span>
                     </div>
                 </div>
-                <!-- PROJETO ANGOR COM SLIDESHOW MISTO (VÍDEO + FOTO) -->
+                <!-- PROJETO ANGOR COM SLIDESHOW MISTO -->
                 <div class="project">
                     <div class="media-container slideshow">
                         <iframe src="https://player.vimeo.com/video/1232806609?background=1&autoplay=1&loop=1&byline=0&title=0" allow="autoplay; fullscreen"></iframe>
@@ -432,13 +524,15 @@
                         <iframe src="https://player.vimeo.com/video/1233195717?background=1&autoplay=1&loop=1&byline=0&title=0" allow="autoplay; fullscreen"></iframe>
                     </div>
                     <div class="project-info">
-                        <span class="project-name">Pertencer</span>
-                        <span class="project-role">Documentário</span>
+                        <span class="project-name">Pertencer HIP-HOP</span>
+                        <span class="project-role">Dir. Fotografia</span>
                     </div>
                 </div>
             </div>
         </section>
-          <section id="automotivo">
+        
+        <!-- AUTOMOTIVO -->
+        <section id="automotivo">
             <h2 class="category-title">AUTOMOTIVO</h2>
             <div class="grid">
                 <div class="project">
@@ -467,10 +561,20 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+            // Lógica para a animação da Tela de Entrada (Landing Page)
+            const enterBtn = document.getElementById('enter-btn');
+            if (enterBtn) {
+                enterBtn.addEventListener('click', () => {
+                    // Adiciona a classe que inicia as transições no CSS
+                    document.body.classList.add('site-active');
+                    // Garante que a página começa do topo
+                    window.scrollTo(0,0);
+                });
+            }
+
             // Script de Slideshow Inteligente (Suporta imagens e vídeos em conjunto)
             const slideshows = document.querySelectorAll('.slideshow');
             slideshows.forEach(slideContainer => {
-                // Seleciona tanto img quanto iframe dentro do mesmo slideshow
                 const medias = slideContainer.querySelectorAll('img, iframe');
                 
                 if (medias.length > 0) {
