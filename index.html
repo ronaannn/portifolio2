@@ -124,7 +124,7 @@
             overflow: hidden;
         }
 
-        /* Iframes e Imagens */
+        /* Iframes e Imagens - Base */
         .media-container iframe,
         .media-container img {
             width: 100%;
@@ -137,12 +137,19 @@
             pointer-events: none; 
         }
 
-        /* Imagens do Slideshow */
-        .media-container img {
+        /* Mídias em Projetos normais (sem slideshow) ficam sempre visíveis */
+        .media-container:not(.slideshow) iframe,
+        .media-container:not(.slideshow) img {
+            opacity: 1;
+        }
+
+        /* Mídias em Projetos com Slideshow (Vídeos e Fotos misturados) */
+        .media-container.slideshow iframe,
+        .media-container.slideshow img {
             opacity: 0;
             transition: opacity 1s ease;
         }
-        .media-container img.active {
+        .media-container.slideshow .active {
             opacity: 1;
         }
 
@@ -164,19 +171,6 @@
             font-size: 0.85rem;
             color: var(--accent-color);
             letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        /* Placeholder */
-        .placeholder::after {
-            content: "Material em Breve";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: #555;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
             text-transform: uppercase;
         }
 
@@ -265,6 +259,7 @@
                 <li><a href="#curta-metragem">Curta-Metragem</a></li>
                 <li><a href="#show">Show</a></li>
                 <li><a href="#documentario">Documentário</a></li>
+                <li><a href="#automotivo">hvgarage</a></li>
             </ul>
         </nav>
     </header>
@@ -272,7 +267,7 @@
     <main>
         <!-- FASHION FILM -->
         <section id="fashion-film">
-            <h2 class="category-title">Fashion Film</h2>
+            <h2 class="category-title">FASHION FILM</h2>
             <div class="grid">
                 <div class="project">
                     <div class="media-container">
@@ -306,7 +301,7 @@
 
         <!-- VIDEOCLIPE -->
         <section id="videoclip">
-            <h2 class="category-title">Videoclipe</h2>
+            <h2 class="category-title">VIDEOCLIPE</h2>
             <div class="grid">
                 <div class="project">
                     <div class="media-container">
@@ -323,7 +318,7 @@
                     </div>
                     <div class="project-info">
                         <span class="project-name">Fabgodam</span>
-                        <span class="project-role">Dir. Fotografia</span>
+                        <span class="project-role">Op de Câmera</span>
                     </div>
                 </div>
             </div>
@@ -331,11 +326,13 @@
 
         <!-- CURTA-METRAGEM -->
         <section id="curta-metragem">
-            <h2 class="category-title">Curta-Metragem</h2>
+            <h2 class="category-title">CURTA-METRAGEM</h2>
             <div class="grid">
                 <div class="project">
-                    <div class="media-container">
-                        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/a0bb56256645443.6ac2ae49d4d52.png" alt="Matando" class="active">
+                    <div class="media-container slideshow">
+                        <iframe src="https://player.vimeo.com/video/1233205364?background=1&autoplay=1&loop=1&byline=0&title=0" allow="autoplay; fullscreen"></iframe>
+                        <iframe src="https://player.vimeo.com/video/1233206018?background=1&autoplay=1&loop=1&byline=0&title=0" allow="autoplay; fullscreen"></iframe>
+                        <iframe src="https://player.vimeo.com/video/1233206414?background=1&autoplay=1&loop=1&byline=0&title=0" allow="autoplay; fullscreen"></iframe>
                     </div>
                     <div class="project-info">
                         <span class="project-name">Matando</span>
@@ -352,25 +349,32 @@
                     </div>
                     <div class="project-info">
                         <span class="project-name">Sonhos</span>
-                        <span class="project-role">Cinematografia</span>
+                        <span class="project-role">Dir. Fotografia</span>
                     </div>
                 </div>
+                <!-- PROJETO ANGOR COM SLIDESHOW MISTO (VÍDEO + FOTO) -->
                 <div class="project">
-                    <div class="media-container">
+                    <div class="media-container slideshow">
                         <iframe src="https://player.vimeo.com/video/1232806609?background=1&autoplay=1&loop=1&byline=0&title=0" allow="autoplay; fullscreen"></iframe>
+                        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/078762256700377.6ac434d8a6898.png" alt="Angor">
+                        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/2841eb256700377.6ac434d8a70fe.png" alt="Angor">
+                        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/4f9fb4256700377.6ac434d8a757a.png" alt="Angor">
+                        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/578437256700377.6ac434d8a6cd8.png" alt="Angor">
                     </div>
                     <div class="project-info">
                         <span class="project-name">Angor</span>
-                        <span class="project-role">Cinematografia</span>
+                        <span class="project-role">Dir. Fotografia</span>
                     </div>
                 </div>
                 <div class="project">
-                    <div class="media-container">
+                    <div class="media-container slideshow">
                         <iframe src="https://player.vimeo.com/video/1232808341?background=1&autoplay=1&loop=1&byline=0&title=0" allow="autoplay; fullscreen"></iframe>
+                        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/6560ee256649613.6ac2e1d296737.png" alt="Supercurta">
+                        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/f88428256649613.6ac2e1d296ba4.png" alt="Supercurta">
                     </div>
                     <div class="project-info">
                         <span class="project-name">Supercurta</span>
-                        <span class="project-role">Cinematografia</span>
+                        <span class="project-role">Dir. Fotografia</span>
                     </div>
                 </div>
             </div>
@@ -378,7 +382,7 @@
 
         <!-- SHOW -->
         <section id="show">
-            <h2 class="category-title">Show</h2>
+            <h2 class="category-title">SHOW</h2>
             <div class="grid">
                 <div class="project">
                     <div class="media-container slideshow">
@@ -390,7 +394,7 @@
                     </div>
                     <div class="project-info">
                         <span class="project-name">Kyan</span>
-                        <span class="project-role">Audiovisual</span>
+                        <span class="project-role">STILL</span>
                     </div>
                 </div>
                 <div class="project">
@@ -400,7 +404,7 @@
                     </div>
                     <div class="project-info">
                         <span class="project-name">Matuê</span>
-                        <span class="project-role">Audiovisual</span>
+                        <span class="project-role">STILL</span>
                     </div>
                 </div>
                 <div class="project">
@@ -413,7 +417,7 @@
                     </div>
                     <div class="project-info">
                         <span class="project-name">Sá & Guarabyra</span>
-                        <span class="project-role">Audiovisual</span>
+                        <span class="project-role">STILL</span>
                     </div>
                 </div>
             </div>
@@ -421,11 +425,11 @@
 
         <!-- DOCUMENTÁRIO -->
         <section id="documentario">
-            <h2 class="category-title">Documentário</h2>
+            <h2 class="category-title">DOCUMENTÁRIO</h2>
             <div class="grid">
                 <div class="project">
-                    <div class="media-container placeholder">
-                        <!-- Sem media por enquanto -->
+                    <div class="media-container">
+                        <iframe src="https://player.vimeo.com/video/1233195717?background=1&autoplay=1&loop=1&byline=0&title=0" allow="autoplay; fullscreen"></iframe>
                     </div>
                     <div class="project-info">
                         <span class="project-name">Pertencer</span>
@@ -434,29 +438,51 @@
                 </div>
             </div>
         </section>
+          <section id="automotivo">
+            <h2 class="category-title">AUTOMOTIVO</h2>
+            <div class="grid">
+                <div class="project">
+                    <div class="media-container slideshow">
+                        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/hd_webp/083010256700985.6ac43b8c2e953.png" alt="automotivo">
+                        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/hd_webp/943ac5256700985.6ac43b8c2ece2.png" alt="automotivo">
+                        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/hd_webp/5d5749256700985.6ac43b8c2f04d.png" alt="automotivo">
+                        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/hd_webp/e27d5d256700985.6ac43b8c2f7c4.png" alt="automotivo">
+                        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/hd_webp/6bb2cd256700985.6ac43b8c2fb06.png" alt="automotivo">
+                        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/hd_webp/282919256700985.6ac43b8c2f412.png" alt="automotivo">
+                    </div>
+                    <div class="project-info">
+                        <span class="project-name">HV GARAGE</span>
+                        <span class="project-role">STILL</span>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer id="contato">
-        <h2 class="footer-title">Vamos trabalhar juntos.</h2>
-        <a href="mailto:ronan15pc@hotmail.com" class="email-link">ronan15pc@hotmail.com</a>
+        <h2 class="footer-title">CONTATO</h2>
+        <a href="mailto:ronan15pc@hotmail.com" class="email-link">ronan15pc@hotmail.com</a><br>
+        <a href="https://www.instagram.com/ronannronan/" class="email-link">@ronannronan</a>
     </footer>
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            // Script para o Slideshow Automático de Imagens
+            // Script de Slideshow Inteligente (Suporta imagens e vídeos em conjunto)
             const slideshows = document.querySelectorAll('.slideshow');
             slideshows.forEach(slideContainer => {
-                const images = slideContainer.querySelectorAll('img');
-                if (images.length > 0) {
+                // Seleciona tanto img quanto iframe dentro do mesmo slideshow
+                const medias = slideContainer.querySelectorAll('img, iframe');
+                
+                if (medias.length > 0) {
                     let currentIndex = 0;
-                    images[currentIndex].classList.add('active'); 
+                    medias[currentIndex].classList.add('active'); 
                     
-                    if (images.length > 1) {
+                    if (medias.length > 1) {
                         setInterval(() => {
-                            images[currentIndex].classList.remove('active');
-                            currentIndex = (currentIndex + 1) % images.length;
-                            images[currentIndex].classList.add('active');
-                        }, 2500);
+                            medias[currentIndex].classList.remove('active');
+                            currentIndex = (currentIndex + 1) % medias.length;
+                            medias[currentIndex].classList.add('active');
+                        }, 2500); // Troca a cada 2.5s
                     }
                 }
             });
